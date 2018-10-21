@@ -2,7 +2,7 @@
   <div class="main">
     <info-block></info-block>
 
-    <svg-index></svg-index>
+    <svg-index :buildings="buildings" :selected="selected" :select="select"></svg-index>
   </div>
 </template>
 
@@ -22,12 +22,13 @@
 <script>
   import InfoBlock from './InfoBlock';
   import SvgIndex from './svg/SvgIndex.vue';
-  import { getEstateBuildings } from '../utils/store';
 
   export default {
+    props: ['buildings', 'selected', 'select'],
+
     components: {
       InfoBlock,
       SvgIndex
-    }
+    },
   };
 </script>

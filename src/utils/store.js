@@ -6,10 +6,7 @@ const estateBuildings = srcData.estateBuildings.map((item, i) => ({
 }));
 
 export default {
-  state: {
-    selectedEstateBuilding: null,
-    estateBuildings
-  },
+  estateBuildings,
 
   selectEstateBuilding(id) {
     console.log(id);
