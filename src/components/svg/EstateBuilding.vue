@@ -3,7 +3,6 @@
     <polygon
         class="svg-estate-building"
         :points="points"
-        :fill="fill"
         @click="onSelect"
         :class="{ 'is-selected': isSelected }"
     >
@@ -19,10 +18,20 @@
   .svg-estate-building {
     stroke-width: 0;
     cursor: pointer;
-    transition: fill .2s, transform .2s;
+    transition: fill .1s;
+    fill: #000;
 
-    &:hover, &.is-selected {
-      fill: red !important;
+    &.is-selected {
+      fill: #f00;
+      pointer-events: none;
+    }
+
+    &:hover {
+      fill: darken(#f00, 5%);
+    }
+
+    &:active {
+      fill: #f00;
     }
   }
 </style>
@@ -31,19 +40,14 @@
   import store from '../../utils/store';
   import Way from './Way';
 
-  const
-    DEFAULT_COLOR = '#000',
-    COLORS = {
-      0: DEFAULT_COLOR
-    };
-
   export default {
     props: ['building', 'selected', 'select'],
     data() {
-      return {
-        fill: (COLORS[this.building.type] || DEFAULT_COLOR),
+
+      console.log(this.building.type);
+      return ({
         points: this.building.polygon
-      };
+      });
     },
 
     computed: {

@@ -1,7 +1,7 @@
 <style lang="less">
   @import "../../less/variables.less";
 
-  @ratio: 1.7;
+  @ratio: 2;
 
   .svg-index {
     min-width: @ratio * 1640px;
@@ -28,6 +28,16 @@
   .svg-bg {
     width: 100%;
     height: 100%;
+  }
+
+  .svg-tooltip {
+    background: #000;
+    border-radius: 3px;
+    color: #fff;
+    position: absolute;
+    font-size: 10px;
+    text-align: center;
+    transition: opacity .2s;
   }
 </style>
 
@@ -135,16 +145,65 @@
         <estate-building :building="building" :selected="selected" :select="select"></estate-building>
       </g>
     </svg>
+
+    <div class="svg-tooltip" :style="style">{{tooltip.distance}}</div>
   </div>
 </template>
 
 
 <script>
-  import EstateBuilding from './EstateBuilding.vue';
+  import EstateBuilding from './EstateBuilding';
   import store from '../../utils/store';
+
+  const
+    TOOLTIP_WIDTH = 60,
+    TOOLTIP_HEIGHT = 25,
+    TOOLTIP_OFFSET = 8;
 
   export default {
     props: ['buildings', 'selected', 'select'],
+
+    data() {
+      return ({
+        tooltip: {
+          show: false,
+          distance: null,
+          x: 0,
+          y: 0
+        }
+      });
+    },
+
+    computed: {
+      style() {
+        return `
+          width: ${TOOLTIP_WIDTH}px;
+          height: ${TOOLTIP_HEIGHT}px;
+          line-height: ${TOOLTIP_HEIGHT}px;
+          left: ${this.tooltip.x - TOOLTIP_WIDTH / 2}px;
+          top: ${this.tooltip.y - (TOOLTIP_HEIGHT + TOOLTIP_OFFSET)}px;
+          opacity: ${this.tooltip.show ? 1 : 0}
+        `;
+      }
+    },
+
+    methods: {
+      showTooltip(mouseX, mouseY, distance) {
+        const
+          x = 0,
+          y = 0;
+
+        this.tooltip.show = true;
+        this.tooltip.x = x;
+        this.tooltip.y = y;
+        this.tooltip.distance = distance;
+      },
+
+      hideTooltip() {
+        this.tooltip.show = false;
+      }
+    },
+
     components: {
       EstateBuilding,
     }
