@@ -10,11 +10,12 @@
   @import "../less/variables.less";
 
   .main {
-    position: fixed;
-    height: 100%;
-    left: @sidebar-width;
-    right: 0;
-    overflow: auto;
+    margin-left: @sidebar-width;
+    //position: fixed;
+    //height: 100%;
+    //left: @sidebar-width;
+    //right: 0;
+    //overflow: auto;
   }
 
 </style>

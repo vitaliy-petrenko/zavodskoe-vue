@@ -9,7 +9,7 @@
     </polygon>
 
     <g v-if="isSelected" v-for="path in building.paths" :key="path.distance">
-      <way :path="path"></way>
+      <way :path="path" :showTooltip="showTooltip" :hideTooltip="hideTooltip"></way>
     </g>
   </g>
 </template>
@@ -41,10 +41,8 @@
   import Way from './Way';
 
   export default {
-    props: ['building', 'selected', 'select'],
+    props: ['building', 'selected', 'select', 'showTooltip', 'hideTooltip'],
     data() {
-
-      console.log(this.building.type);
       return ({
         points: this.building.polygon
       });

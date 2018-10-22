@@ -1,7 +1,7 @@
 <style lang="less">
   @import "../../less/variables.less";
 
-  @ratio: 2;
+  @ratio: 1.6;
 
   .svg-index {
     min-width: @ratio * 1640px;
@@ -28,6 +28,9 @@
   .svg-bg {
     width: 100%;
     height: 100%;
+    & > path {
+      stroke-linecap: round;
+    }
   }
 
   .svg-tooltip {
@@ -35,9 +38,18 @@
     border-radius: 3px;
     color: #fff;
     position: absolute;
-    font-size: 10px;
+    font-size: 12px;
     text-align: center;
-    transition: opacity .2s;
+    transition: opacity .1s .2s, background .2s, transform .2s;
+    padding: 0 4px;
+    white-space: nowrap;
+    min-width: 60px;
+    height: 30px;
+    line-height: 30px;
+    left: -(60px/2);
+    top: -(30px + 16px);
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
   }
 </style>
 
@@ -142,7 +154,14 @@
       <path class="bg_b"
             d="M649 334v1m0 0h1m0 0h1m461-288h-1m0 0h-1m0 0v1m0 0v1m5 0h-1m0 0v-1m0 0v-1m0 0h-1m0 0h-1m2 29v-1m0 0h1m-5 0v1m0 0h1m8-29h-1m0 0v1m0 0h-1m0 0v1m111 0v-1m0 0h-1m0 0v-1m0 0h-1m-1 28h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m-110 1v1m0 0v1m0 0h1m0 0v1m0 0h1M284 406h-1m0 0v1m0 0h-1m0 0v1m0 0v1m0 0v1m0 0h1m0 0v1m0 0h1m3-5h-1m101 35v-1m0 0h1m0 0h-1m0 0v-1m0 0v-1m0 0h-1m-2 5h1m0 0h1m0 0v-1m0 0h1m0 0v-1m154-139h-1m0 0v1m0 0v1m0 0v1m42-15v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 0h-1m2 5h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m-42 15v1m0 0h1m0 0h1m0 0h1m42-20h-1m0 0v1m0 0h-1m0 0v1m0 0v1m0 0h1m30-11v-1m0 0s-1 0-1-1m0 0h-1m0 0h-1m2 5h1m0 0v-1m0 0v-1m0 0h1m0 0v-1m0 0h-1m-30 11v1m0 0h1m0 0h1m0 0v1m0 0v-1m0 0h1m120-52h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m52 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 56h1m0 0v-1m0 0h1m0 0v-1m0 0h1m0 0v-1m-52 0v1m0 0v1m0 0h1m0 0v1m0 0h1m0 0h1m373-211h-1m0 0v1m0 0h-1m0 0v1m29 0v-1m0 0v-1m0 0h-1m0 0h-1m0 23h1m0 0h1m0 0v-1m0 0v-1m-29 8v1m0 0h1m0 0v1m0 0h1m0 0h1m-153 32h-1m0 0v1m0 0h-1m0 0v1m0 0v1m5-2v-1m0 0h-1m0 0h-1m0 0h-1m15 41v-1m0 0h1m0 0v-1m0 0v-1m-4 1v1m0 0v1m0 0h1m0 0h1m0 0h1m-5-45h-1m0 0v1m0 0h-1m0 0v1m0 0v1m0 0v1m47-18v-1m0 0h-1m0 0h-1m0 0h-1m2 5v-1m0 0h1m0 0v-1m0 0l1-1m0 0h-1m0 0v-1m-47 18h1m0 0v1m0 0h1m0 0h1M535 310h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m52-16v-1m0 0h-1m0 0h-1m0 0h-1m11 51v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 10h1m0 0h1m0 0v-1m0 0h1m0 0v-1m-60-1v1m0 0h1m0 0v1m0 0v1m0 0h1m0 0h1m0-24h-1m0 0h-1m0 0v1m0 0v1m0 0h-1m0 0v1m0-8c0 1 1 1 1 1m0 0v1m0 0h1m0 0h1m-223 80h-1m0 0h-1m0 0v1m0 0v1m0 0v1m0 0v1m0 0h1m0 0v1m79 22v-1m0 0v-1m0 0v-1m0 0h-1m0 0h-1m-1 5h1m0 0h1m0 0v-1m0 0h1m0 0v-1m598-307h-1m0 0v1m0 0h-1m0 0v1m0 0v1m5-1v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 54h1m0 0h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m0 8v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 15h1m0 0h1m0 0v-1m0 0h1m0 0v-1m-43 0v1m0 0h1m0 0v1m0 0h1m-13-48h-1m0 0v1m0 0v1m0 0h-1m0 0v1m0 0h1M588 292h-1m0 0v1m0 0h-1m0 0v1m0 0v1m0 0v1m31-14h-1m23 2v-1m0 0h-1m0 0v-1m0 0h-1m0 30h1m0 0h1m0 0v-1m0 0v-1m0 8v-1m0 0v-1m0 0h-1m0 0h-1m0 0v-1m0 38h1m0 0h1m0 0v-1m0 0v-1m-44 0v1m0 0h1m0 0v1m0 0h1m-10-56v1m0 0h1m0 0v1m0 0h1m407-173h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m0 0v1m5 0v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 22h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m-5 0v1m0 0v1m0 0h1m0 0v1m0 0h1m0 0h1m115-65h-1m0 0v1m5 0v-1m0 0h-1m-2 58h1m0 0v-1m0 0h1m0 0v-1m0 0h1m0 0v-1m-5 0v1m0 0v1m0 0h1m0 0v1m0 0h1M590 301h-1m0 0v1m0 0h-1m0 0v1m5 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 40h1m0 0h1m0 0v-1m0 0h1m0 0v-1m-5 0v1m0 0h1m0 0v1m0 0h1m-250 65h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m0 0v1m0 0h1m0 0v1m0 0h1m0 0v1m3-5h-1m52 19v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m-2 5h1m0 0h1m0 0v-1m0 0h1m0 0v-1m727-342h-1m0 0h-1m0 0v1m0 0v1m40 0v-1m0 0v-1m0 0h-1m0 0h-1m66 54h-1m0 0v1m0 0h-1m0 0v1m0 0v1m9 0v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 61h1m0 0v-1m0 0h1m0 0v-1m-60 0v1m0 0v1m0 0h1m0 0h1m-51-54h1m0 0h1m0 0v-1m0 0h1m0 0v-1m-5 0v1m0 0h1m0 0v1m0 0h1M644 282h-1m0 0h-1m0 0v1m0 0v1m5 0h-1m0 0v-1m0 0v-1m0 0h-1m0 0h-1m2 71v-1m0 0h1m-5 0v1m0 0h1m116-115h-1m0 0v1m5 0v-1m0 0h-1m-1 26h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m-5 0v1m0 0v1m0 0h1m0 0v1m0 0h1m0 0h1m7-26h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m37 0v-1m0 0v-1m0 0h-1m0 0h-1m0 25h1m0 0v-1m0 0h1m0 0v-1m-37 0v1m0 0h1m0 0v1m0 0h1m0 0h1M367 406h-1m0 0v1m0 0h-1m0 0v1m0 0v1m0 0v1m0 0h1m0 0h1m0 0v1m3-5h-1m26 11v-1m0 0v-1m0 0v-1m0 0h-1m0 0v-1m-2 6h1m0 0h1m0 0v-1m0 0h1m0 0v-1m614-274h-1m0 0v1m0 0v1m0 0v1m40-15v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 0v1m2 4h1m0 0v-1m0 0v-1m0 0v-1m-40 15v1m0 0h1m0 0h1m0 0h1M398 409v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 5h1m0 0v-1m0 0h1m0 0v-1m0 0h1m598-258h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m5 0v-1m0 0h-1m0 0v-1m0 0h-1m1 47h1m0 0v-1m-5 0v1m0 0h1m169-115h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m67 1v-1m0 0v-1m0 0h-1m0 0h-1m0 0v-1m1 32h1m0 0l1-1m0 0v-1m0 8v-1m0 0v-1m0 0h-1m0 0h-1m0 0v-1m0 16h1m0 0v-1m0 0h1m0 0v-1m-42 12h1m0 0v1m0 0h1m0 0h1m0 0h1m-30-55v1m0 0h1m0 0v1m0 0h1m0 0h1m0 0h1m-161 59h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m44-13v-1m0 0h-1m0 0h-1m0 0v-1m0 0v1m0 0h-1m27 52v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m1 9h1m0 0s1 0 1-1m0 0v-1m-68 0v1m0 0h1m0 0v1m0 0h1m0 0h1m0-26h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m0-8v1m0 0h1m0 0v1m0 0v1m0 0h1m0 0h1m-122 33h-1m0 0v1m348 0v-1m0 0h-1m0 32h1m0 0v-1m-348 0v1m0 0h1m223-125h-1m0 0v1m0 0h-1m0 0v1m0 0v1m0 0h-1m0 0h1m0 0v1m5-1v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 89h1m0 0s1 0 1-1m0 0v-1m-36 0v1m0 0h1m0 0v1m0 0h1m0 0h1m-20-64h-1m0 0v1m0 0v1m0 0v1M808 238h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m72 0h-1m0 0v-1m0 0v-1m0 0h-1m0 0h-1m0 23h1m0 0h1m0 0v-1m0 0v-1m0 0h1m0 8v-1m0 0h-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 22h1m0 0h1m0 0v-1m0 0v-1m0 0h1m-61 10v1m0 0h1m0 0h1m0 0h1m-14-30v1m244-127h-1m0 0v1m0 0h-1m0 0v1m0 0v1m5-1v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m17 47h1m0 0v-1m0 0v-1m0 0h1m0 0h-1m0 0v-1m-4 2v1m0 0h1m0 0v1m0 0h1m0 0h1m0 0v-1m98-92h-1m0 0v1m0 0h-1m0 0v1m0 0v1m0 0v1m5-2v-1m0 0h-1m0 0c-1 0-1 0-1-1m0 0h-1m18 51v-1m0 0h1m0 0v-1m0 0h1m0 0v-1m0 0h-1m-4 1v1m0 0h1m0 0v1m0 0h1m0 0h1M761 266h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m0 0v1m5 0v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 28h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m-5 0v1m0 0v1m0 0h1m0 0l1 1m0 0h1m7-28h-1m0 0h-1m0 0v1m0 0v1m0 0h-1m0 0v1m31-1v-1m0 0l-1-1m0 0h-1m36 80v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m1 9h1m0 0h1m0 0v-1m0 0v-1m-65 0v1m0 0h1m0 0v1m0 0h1m0 0h1m0-15h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m0-8v1m0 0h1m0 0v1m0 0v1m0 0h1m0 0h1m-55-39h-1m0 0h-1m0 0v1m0 0v1m28 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 5h1m0 0h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m-28 0v1m0 0v1m0 0h1m0 0v1m0 0h1m521-218v1m0 0h-1m0 0h-1m0 0v1m0 0v1m66-1v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 115h1m0 0h1m0 0v-1m0 0h1m0 0v-1m-67 0v1m0 0h1m0 0v1m0 0h1m0 0h1M699 309h-1m0 0h-1m0 0v1m0 0v1m5 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 33h1m0 0h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m-5 0v1m0 0v1m0 0h1m0 0v1m0 0h1m102-75h-1m0 0v1m0 0l-1 1m0 0v1m0 0h1m4-2v-1m0 0h-1m0 0h-1m0 0h-1m11 31h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m0 0v-1m-5 2v1m0 0h1m0 0v1m0 0h1m0 0h1m70-60h-1m0 0h-1m0 0v1m0 0v1m56 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 50h1m0 0l1-1m0 0v-1m0 0h1m0 0v-1m-43 9h1m0 0v-1m0 0h1m0 0v-1m-15-3v1m0 0v1m0 0h1m0 0v1m0 0h1m230-148h-1m0 0h-1m0 0v1m0 0v1m5 0h-1m0 0v-1m0 0v-1m0 0h-1m0 0h-1m2 54v-1m0 0h1m-5 0v1m0 0h1m15-58h-1m0 0v1m0 0h-1m0 0v1m0 0v1m41 0v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 5h1m0 0v-1m0 0h1m0 0v-1m-41 0v1m0 0h1m0 0v1m0 0h1M469 417h-1m0 0h-1m0 0h-1m0 0h-1m0 0h-1m0 0h-1m0 0h-1m0 0h-1m0 0h-1m0 0v1m32 11s0-1 1-1m0 0v-1m0 0h-1m0 0v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m-79 19h-1m0 0v1m0 0h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m0 0h-1m0 0s0 1-1 1m0 0l-1 1m0 0v1m0 0h-1m0 0v1m0 0h-1m0 0v1m0 0h-1m0 0v1m0 0v1m0 0h-1m0 0v1m0 0v1m0 0h-1m0 0v1m0 0v1m720-310h-1m0 0v1m0 0h-1m0 0v1m0 0v1m41 0v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m9 44h-1m0 0v-1m0 0v-1m0 0h-1m0 0h-1m0 9h1m0 0h1m0 0v-1m0 0v-1m0 0h1m-48 0v1m0 0h1m0 0v1m0 0h1m0-39h-1m0 0v1m0 0h-1m0 0v1m0-8v1m0 0v1m0 0h1m0 0v1m0 0h1M761 299h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m5 0v-1m0 0h-1m0 0v-1m0 0h-1m1 54h1m0 0v-1m-5 0v1m0 0h1m182-115h-1m0 0h-1m0 0v1m0 0v1m52 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 55h1m0 0h1m0 0v-1m0 0h1m0 0v-1m-51 8h1m0 0h1m0 0v-1m0 0v-1m0 0h1m-7 51v-1m0 0v-1m0 0h-1m0 0h-1m0 0v-1m0 0h-1m0 8h1m0 0h1m0 0v-1m0 0h1m0 0v-1m-56-1v1m0 0h1m0 0v1m0 0h1m0 0h1m-1-55h-1m0 0v1m0 0h-1m0 0v1m0 0v1m55-9h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m7-50v1m0 0v1m0 0h1m0 0h1m-114 43h-1m0 0v1m0 0h-1m0 0h-1m0 0v1m0 0v1m40 0v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 5h1m0 0h1m0 0v-1m0 0v-1m-40 0v1m0 0h1m0 0v1m0 0h1m0 0h1M554 451v-1m0 0v-1m0 0v-1m0 0v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m-2 17h1m0 0h1m0 0v-1m0 0h1m0 0v-1m0 0h1m-6 18v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m-13 31v1m0 0h1m0 0h1m0 0h1m0 0v-1m0 0h1m0 0h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m0 0h1m625-351h-1m0 0v1m0 0h-1m0 0v1m0 0h-1m0 0v1m5 0v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 37h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m-5 0v1m0 0h1m0 0v1m0 0h1m0 0v1m0 0h1M813 300h-1m0 0v1m0 0h-1m0 0v1m0 0v1m5-2v-1m0 0h-1m0 0h-1m0 0v-1m0 0h-1m0 0v1m15 41h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m-5 2v1m0 0h1m0 0h1m0 0v1m0 0h1m0 0v-1m-8-44h-1m0 0v1m0 0h-1m0 0v1m0 0v1m51-11h-1m0 0v1m0 0h-1m0 0v1m0 0v1m10 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m-1 63h1m0 0h1m0 0v-1m0 0h1m0 0v-1m-43 1v1m0 0h1m0 0v1m0 0h1m0 0h1m104-105h-1m0 0h-1m0 0v1m0 0v1m5 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 41h1m0 0v-1m0 0h1m0 0v-1m0 0h1m0 0v-1m-5 0v1m0 0v1m0 0h1m0 0v1m0 0h1m244-139h-1m0 0s-1 0-1 1m0 0v1m0 0v1m35-13h-1m0 0v-1m0 0h-1m0 0h-1m0 0h-1m2 4h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m-35 13h1m0 0v1m0 0h1m0 0h1m-191 84h-1m0 0v1m5 0v-1m0 0h-1m-1 51h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m-5 0v1m0 0v1m0 0h1m0 0v1m0 0h1m0 0h1m7-51h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m46 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 56h1m0 0h1m0 0v-1m0 0h1m0 0v-1m-46 0v1m0 0h1m0 0v1m0 0h1m0 0h1m0-39h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m0-8v1m0 0h1m0 0v1m0 0v1m0 0h1m0 0h1M489 461h-1m0 0h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m36 11v-1m0 0v-1m0 0h-1m0 0v-1m-2 5h1m0 0h1m0 0h1m0 0v-1m0 0v-1m379-184h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m0 0v1m33 0v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 5h1m0 0v-1m0 0h1m0 0v-1m-33 0v1m0 0h1m0 0v1m0 0h1m0 0h1m-93 188v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m-11 36h1m0 0h1m0 0v-1m0 0h1m0 0v-1m253-276h-1m0 0l-1 1m0 0v1m59 0v-1m0 0v-1m0 0h-1m0 0h-1m0 115h1m0 0s1 0 1-1m0 0v-1m-107 0v1m0 0h1m0 0v1m0 0h1m0 0h1m0-56h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m-241 61h-1m0 0v1m5 0v-1m0 0h-1m1 28v1m0 0v1m0 0s0 1 1 1m0 0v1m0 0s0 1 1 1m0 0v1m0 0h1m0 0v1m0 0h1m0 0h1m0 0v1m0 0h1m93 29v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m-1 5h1m0 0h1m0 0v-1m0 0h1m0 0v-1m-104-37v1m0 0v1m0 0v1m0 0h1m0 0v1m0 0v1m0 0v1m0 0h1m0 0v1m0 0v1m0 0h1m0 0v1m0 0h1m0 0v1m0 0h1m0 0v1m0 0h1m0 0h1m0 0v1m0 0h1m0 0h1m0 0v1m0 0h1m0-41h-1m0 0v1m0 0h-1m0 0v1m0 0h-1m0 0v1m111 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 62h1m0 0h1m0 0h1m0 0v-1m0 0s0-1 1-1m-112-33v1m0 0h1m0 0v1m0 0v1m0 0h1m0 0v1m0 0c0 1 1 1 1 1m0 0h1m0 0v1m0 0h1m177-99h-1m0 0v1m0 0h-1m0 0v1m0 0v1m32 0v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 5h1m0 0h1m0 0v-1m0 0v-1m-32 0v1m0 0v1m0 0h1m0 0h1m-13 2h-1m0 0h-1m0 0v1m0 0v1m5 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 41h1m0 0h1m0 0v-1m0 0h1m0 0v-1m-5 0v1m0 0h1m0 0v1m0 0h1m8-41h-1m0 0v1m0 0h-1m0 0h-1m0 0v1m0 0v1m43-9h-1m0 0v1m0 0h-1m0 0v1m0 0v1m11 2v-1m0 0h-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 55h1m0 0h1m0 0v-1m0 0h1m0 0v-1m-52 0v1m0 0h1m0 0v1m0 0h1m170-115h-1m0 0v1m5 0v-1m0 0h-1m-2 71h1m0 0v-1m0 0h1m0 0v-1m0 0h1m0 0v-1m-5 0v1m0 0v1m0 0h1m0 0v1m0 0h1m7-71h-1m0 0h-1m0 0v1m0 0v1m44 0v-1m0 0h-1m0 0v-1m0 0h-1m11 56h-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m2 7v-1m0 0h1m0 0v-1m0 0v-1m0 0v-1m-31 14h1m0 0h1m-24-3v1m0 0v1m0 0h1m0 0v1m0 0h1m0-31v1m0 0h-1m0 0h-1m0 0v1m0 0v1m0-8v1m0 0v1m0 0h1m0 0h1M507 504h-1m0 0v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0v-1m0 0c-1 0-1 0-1-1m26 14h1m0 0h1m0 0h1m0 0v-1m0 0h1m0 0h1m0 0v-1m0 0l1-1m0 0v-1m-28-5v1m0 0h1m0 0v1m0 0h1m0 0c0 1 0 1 1 1m486-209h-1m0 0v1m0 0h-1m0 0c-1 0-1 1-1 1m0 0v1m5 0v-1m0 0v-1m0 0h-1m0 0h-1m0 0v-1m1 55h1m0 0v-1m-5 0v1m0 0h1m238-151h-1m0 0v1m0 30v1m0 0h1m-65 4h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m64 0v-1m0 0h-1m0 0v-1m0 0h-1m0 15h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m0 8v-1m0 0h-1m0 0v-1m0 0h-1m0 25h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m-56 17h1m0 0v1m0 0h1m0 0h1m-11-51v1m0 0c0 1 0 1 1 1m0 0h1m0 0v1m0 0h1M883 361h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m42 0v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m30 66v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 0h-1m1 5h1m0 0h1m0 0v-1m0 0v-1m0 0h1m0 0v-1m-58 3h1m0 0h1m-14-6v1m0 0v1m0 0h1m0 0v1m285-176h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m5 0v-1m0 0h-1m0 0v-1m0 0h-1m0 40h1m0 0v-1m0 0h1m0 0v-1m-5 0v1m0 0h1m0 0v1m0 0h1m0 0h1m-238 70h-1m0 0v1m0 0h-1m0 0v1m0 0h-1m0 0v1m66 0v-1m0 0s0-1-1-1m0 0v-1m0 0h-1m0 0h-1m0 69h1m0 0h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m-38 0v1m0 0v1m0 0h1m0 0v1m0 0h1m-30-61v1m0 0h1m0 0v1m0 0h1m0 0v1m0 0h1m0 0v-1m0 0h1m305-132h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m67 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m-5 101v-1m0 0h1m0 0h1m0 0v-1m0 0h1m0 0v-1m0 0h1m0 0v-1m0 0h1m0 0v-1m0 0l1-1m0 0v-1m0 0h1m0 0v-1m0 0v-1m0 0v-1m0 0s0-1 1-1m0 0v-1m0 0v-1m-8 13h-1m0 0c0 1-1 1-1 1m0 0h-1m0 0v1m0 0h-1m0 0v1m0 0h-1m0 0v1m0 0h-1m0 0v1m0 0c-1 0-1 0-1 1m0 0v1m0 0h-1m-12 7h1m0 0h1m0 0h1m0 0h1m0 0v-1m0 0h1m0 0h1m0 0l1-1m0 0h1m0 0v-1m0 0h1m0 0s0-1 1-1m0 0l1-1m0 0v-1m0 0h1m0 0v-1m-50 4v1m0 0v1m0 0h1m0 0h1m-305 21h-1m0 0h-1m0 0v1m0 0v1m0 0v1m5-2h-1m0 0v-1m0 0h-1m0 0h-1m17 49h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m-5 1v1m0 0h1m0 0v1m0 0h1m0 0h1m48-62h-1m0 0v1m5 0v-1m0 0h-1m115-48h-1m0 0h-1m0 0v1m0 0v1m5 0h-1m0 0v-1m0 0v-1m0 0h-1m0 0h-1m2 41v-1m0 0h1m-5 0v1m0 0h1m-108 7h-1m0 0v1m0 0h-1m0 0v1m0 0h-1m0 0v1m44 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m9 66v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 5h1m0 0h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m-50 0v1m0 0h1m0 0v1m0 0v1m0 0h1m0 0h1m0-27h-1m0 0v1m0 0h-1m0 0v1m0 0h-1m0 0v1m0-8v1m0 0h1m0 0v1m0 0h1m0 0h1m116-87h-1m0 0v1m0 0h-1m0 0v1m21 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 41h1m0 0h1m0 0v-1m0 0h1m0 0v-1m-21 0v1m0 0h1m0 0v1m0 0h1m24-43h-1m0 0v1m0 0v1m0 0v1m0 0v1m0 0h1m0 0v1m0 0h1m0 0h1m28-13h-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m2 5h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m3-4h-1m0 0v1m0 0v1m0 0h-1m0 0v1m42-15v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 0v1m2 4h1m0 0v-1m0 0v-1m0 0v-1m-42 15h1m0 0v1m0 0c0 1 0 1 1 1m0 0h1m0 0h1m43-19h-1m0 0v1m0 0h-1m0 0v1m0 0v1m9-1v-1m0 0h-1m0 0v-1m0 0h-1m-1 68h1m0 0h1m0 0v-1m0 0v-1m-86 1v1m0 0h1m0 0v1m0 0h1m0-35h-1m0 0v1m0 0h-1m0 0v1m-92 40h-1m0 0v1m0 0h-1m0 0v1m0 0v1m60 0v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 14h1m0 0h1m0 0v-1m0 0v-1m0 8v-1m0 0v-1m0 0h-1m0 0h-1m0 0v-1m1 16h1m0 0v-1m0 0v-1m0 0v-1m-27 39h1m0 0h1m0 0l1-1m0 0h1m0 0v-1m0 0h1m0 0v-1m-32 0v1m0 0v1m0 0h1m0 0v1m0 0h1m-8-62v1m0 0v1m0 0h1m0 0h1m-157 62h-1m0 0v1m0 0h-1m0 0v1m0 0v1m60 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 5h1m0 0h1m0 0v-1m0 0h1m0 0v-1m-60 0v1m0 0h1m0 0v1m0 0h1m156-64h-1m0 0h-1m0 0v1m0 0v1m5 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 50h1m0 0h1m0 0v-1m0 0c1 0 1-1 1-1m0 0v-1m-5 0v1m0 0v1m0 0h1m0 0v1m0 0h1m63-62h-1m0 0v1m5 0h-1m0 0v-1m-2 32h1m0 0v-1m0 0h1m0 0v-1m0 0h1m0 0v-1m-5 0v1m0 0v1m0 0h1m0 0v1m0 0h1m7-32h-1m0 0v1m0 0h-1m0 0v1m0 0v1m60 0v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m2 27v-1m0 0v-1m-21 29h1m0 0h1m0 0h1m0 0c0-1 0-1 1-1m-37-13h1m0 0v1m0 0h1m0 0h1m0 0v-1m0 0h1m-10-8v1m0 0v1m0 0h1m-163 37h-1m0 0v1m0 0h-1m0 0v1m0 0v1m0 0v1m0 0c0 1 1 1 1 1m0 0h1m-2 10h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m5 0v-1m0 0v-1m0 0h-1m0 0h-1m0 34h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m-5 0v1m0 0s0 1 1 1m0 0v1m0 0h1m0 0h1m97-46v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 5h1m0 0h1m0 0v-1m0 0h1m0 0v-1m61-38c-1 0-1 0-1-1m0 0h-1m0 0h-1m0 0v1m0 0h-1m4 3c1 0 1 0 1-1m0 0v-1m0 0h-1m0 0v-1m-31 40h1m0 0h1m0 0h1m0 0h1m0 0l1-1m0 0h1m0 0h1m0 0v-1m0 0h1m0 0v-1m0 0h1m0 0s0-1 1-1m0 0v-1m0 0h1m0 0v-1m-38 4v1m0 0h1m0 0v1m0 0h1m0-5h-1m0 0v1m0 0h-1m0 0v1m0 0v1m27-3h1m0 0h1m0 0h1m0 0h1m0 0v-1m0 0h1m0 0v-1m0 0h1m0 0v-1m0 0h1m0 0v-1m95-49h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m5 0v-1m0 0v-1m0 0h-1m0 0h-1m0 9v-1m0 0h1m0 0h1m0 0v-1m0 0v-1m-5 0v1m0 0h1m0 0v1m0 0h1m0 0v1m0 0h1m-50 14h-1m0 0v-1m0 0h-1m0 0h-1m0 0v1m0 0h-1m25 16h1m0 0v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m-2 4h1m0 0v1m0 0s1 0 1-1m0 0h1m0 0v-1m-25-16v1m0 0v1m0 0v1m0 0h1m0 0v1m52-16h-1m0 0v-1m0 0h-1m0 0v1m0 0h-1m0 0h-1m5 3v-1m0 0v-1m0 0v-1m0 0h-1m-23 35h1m0 0h1m0 0h1m0 0v-1m0 0h1m-4-3v1m0 0h-1m0 0v1m0 0s0 1 1 1m0 0v1m136-81h-1m0 0v1m0 0h-1m0 0h-1m0 0v1m0 0h-1m0 0v1m0 0h-1m0 0v1m0 0h-1m0 0v1m0 0s-1 0-1 1m0 0v1m0 0h-1m0 0v1m0 0v1m0 0v1m0 0h-1m0 0v1m0 0v1m0 0v1m0 0v1m0 0v1m0 0v1m0 0v1m0 0h1m0 0v1m0 0v1m0 0v1m0 0h1m0 0v1m0 0v1m0 0h1m0 0v1m0 0h1m0 0v1m0 0h1m0 0v1m0 0h1m0 0v1m0 0h1m0 0v1m0 0h1m0 0h1m0 0v1m0 0h1m0 0h1m0 0h1m0 0h1m0 0v1m0 0h1m0 0h1m0 0h1m0 0h1m0 0v-1m0 0h1m0 0h1m0 0h1m0 0h1m0 0v-1m0 0h1m0 0h1m0 0v-1m0 0h1m0 0v-1m0 0h1m0 0v-1m0 0h1m0 0v-1m0 0h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m0 0h1m0 0v-1m0 0v-1m0 0h1m0 0v-1m0 0v-1m0 0v-1m0 0v-1m0 0v-1m0 0v-1m0 0v-1m0 0v-1m0 0h-1m0 0v-1m0 0v-1m0 0v-1m0 0h-1m0 0v-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 0v-1m0 0h-1m0 0h-1m0 0h-1m0 0h-1m0 0h-1m0 0h-1m0 0h-1m0 0h-1m0 0h-1m0 0h-1m0 0v1m0 0h-1m-474-48h1m0 0v-1m0 0h1m0 0v-1m0 0v-1m276-176v-1m0 0h1m0 0v-1m0 0h1m0 0v-1m0 0h-1m0 0v-1m0 0v-1m0 0h-1m0 0h-1m0 0h-1m-41 15h-1m0 0v1m0 0h-1m0 0v1m0 0v1m0 0v1m0 0h1m0 0v1m0 0h1m0 0h1m0 0h1m-840 64h3m-58 3v40m51-108h-3m55-14v-7m4 86h9m58 0h3m-57 3v40m-4-121c-3 1-6 1-9 2m63-13c-1 1-2 1-3 1m56 88h10M382 94v-7m16 111v40m50-43h2M395 94c-3 1-7 2-10 2m59-10h-3m59-3v-8m-43-3h-3m56 0h-5m27 14h-4m48 0h-3m79-10v7m-16 0v-7m13 10h-10m13 112v40m-16-120v-3m0 22v-3m116-51v-7m0 65v-2m0 45v-3m4 14h9m-57 0h3m106 0h2m-50 3v40m0-101v5m-4-56h-9m13-10v7m-17-36v-3m68 42h-3m57-3v-7m6 10h-3m5-10v7m-8-36v-3m8 136v3m0 15v40m63-43h3m-71 0h3m39-109h-3m71-3v-7m0 50v-3m13-37h-9m13 62v3M987 47v-3m17 32v7m100-36v-3m16 32v7m-42 3h-3m29-3v-7m13 10h-10m13 58v3m103-100v-3m-63 42h-3m66-3v-8m13 123v40m-4-152h-5m67-3v-7m-71 61v-3m-119-25v-3m3 52c-14 5-27 10-41 15m41 22h10m48 0h3m-48 3v40m0-82v3m108 36h3m5 157v9m-8-120h3m-8-3v-40m0 86v-3m-82 69h-3m-18 3v7m-3-10h-10m13-41v3m-120 38h-9m116-109h10m-13-3v-40m-100 155v7m0-66v3m42-56h2m-61-3v-40m4 43h9m-64 0h3m-62 0h3m-6-3v-40m8 94v5m0 55v9m-8-72v-28m6 89h-4m-43 0h-3m109 0h-3m51-52v-5m-218 60v7m-4-10h-9m13-15v3m0-75v3m33-25h3m-49 0h9m-13-3v-40m0 101v-5m-48 56h-3m175 13h4m-6-2v-9m48 11h3m-43 63v10m105-76v-7m-34 73h-3m41-63h9m44 0h3m-43 66v9m-4-12h-9m116-63h10m44-122h3m-528-3v-40m3 43h10m3 94v3m50-97h2m-68 41v-3m13 71h-10m-44 0h-3m-60 0h-4m7-43v3m80-69h3m-118-3v-40m6 43h9m-45 109h-3m-72 0h-10m13 3v7m0-50v3m40-72h3m-56 0h10m-13-3v-40M278 350h-9m13 3v7m0-66v2m42-55h2M162 353v7m-4-10h-7m11-23v3m32 20h-3m74-62v-3m0-47v-40m4 43h9M147 135v-3m353 12v-5m6 56h9m65 0h3m-48 3v40m114 95v-93"/>
       <g v-for="building in buildings" :key="building.id" :selected="selected">
-        <estate-building :building="building" :selected="selected" :select="select"></estate-building>
+        <estate-building
+            :building="building"
+            :selected="selected"
+            :select="select"
+            :showTooltip="showTooltip"
+            :hideTooltip="hideTooltip"
+        >
+        </estate-building>
       </g>
     </svg>
 
@@ -154,11 +173,7 @@
 <script>
   import EstateBuilding from './EstateBuilding';
   import store from '../../utils/store';
-
-  const
-    TOOLTIP_WIDTH = 60,
-    TOOLTIP_HEIGHT = 25,
-    TOOLTIP_OFFSET = 8;
+  import { pluralize } from '../../utils/other';
 
   export default {
     props: ['buildings', 'selected', 'select'],
@@ -169,38 +184,51 @@
           show: false,
           distance: null,
           x: 0,
-          y: 0
+          y: 0,
+          bg: '#000',
+          timeout: undefined
         }
       });
     },
 
     computed: {
       style() {
+        const { show, bg, x, y } = this.tooltip;
+
         return `
-          width: ${TOOLTIP_WIDTH}px;
-          height: ${TOOLTIP_HEIGHT}px;
-          line-height: ${TOOLTIP_HEIGHT}px;
-          left: ${this.tooltip.x - TOOLTIP_WIDTH / 2}px;
-          top: ${this.tooltip.y - (TOOLTIP_HEIGHT + TOOLTIP_OFFSET)}px;
-          opacity: ${this.tooltip.show ? 1 : 0}
+          opacity: ${show ? 1 : 0};
+          background-color: ${bg};
+          transform: translate3d(${x}px, ${y}px, 0);
         `;
       }
     },
 
     methods: {
-      showTooltip(mouseX, mouseY, distance) {
+      /**
+       * @param {Number} mouseX
+       * @param {Number} mouseY
+       * @param {Number} distance
+       * @param {String} bg
+       */
+      showTooltip(mouseX, mouseY, distance, bg = '#000') {
         const
-          x = 0,
-          y = 0;
+          x = mouseX,
+          y = mouseY,
+          meters = Math.floor(distance);
+
+        clearTimeout(this.tooltip.timeout);
 
         this.tooltip.show = true;
         this.tooltip.x = x;
         this.tooltip.y = y;
-        this.tooltip.distance = distance;
+        this.tooltip.distance = meters + ' ' + pluralize(meters, 'метр', 'метра', 'метров');
+        this.tooltip.bg = bg;
       },
 
       hideTooltip() {
-        this.tooltip.show = false;
+        this.tooltip.timeout = setTimeout(() => {
+          this.tooltip.show = false;
+        }, 1500);
       }
     },
 

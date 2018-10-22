@@ -1,16 +1,27 @@
 <template>
-  <path :d="path.way" :stroke="stroke" :fill="fill" class="svg-way" :title="path.distance" @mouseover="mouseOver" @mouseout="mouseOut"></path>
+  <path :d="path.way" :stroke="color" class="svg-way" @mouseover="mouseOver" @mouseout="mouseOut"></path>
 </template>
 
 <style lang="less" scoped="">
   .svg-way {
     opacity: .7;
-    stroke-width: 1;
+    stroke-width: 1.5;
     will-change: opacity;
     animation: show .4s ease-in-out forwards;
     cursor: pointer;
     transition: stroke-width .1s, opacity .1s;
     position: relative;
+    fill: transparent;
+    stroke-linecap: round;
+
+    &:hover {
+      stroke-width: 3;
+    }
+  }
+
+  .svg-way-shadow {
+    stroke: transparent;
+    fill: transparent
   }
 
   @keyframes show {
@@ -27,25 +38,23 @@
   const TOOLTIP_SHOW_TIME = 1000;
 
   export default {
-    props: ['path'],
+    props: ['path', 'showTooltip', 'hideTooltip'],
 
     data() {
       const color = `rgb(${this.path.color})`;
 
       return {
-        stroke: color,
-        fill: color
+        color,
       };
     },
 
     methods: {
-      mouseOver() {
-        console.log(this.path.distance);
-        console.log(...arguments);
+      mouseOver({ pageX = 0, pageY = 0 } = {}) {
+        this.showTooltip(pageX, pageY, this.path.distance, this.color);
       },
 
       mouseOut() {
-        console.log('out');
+        this.hideTooltip();
       }
     }
   };
