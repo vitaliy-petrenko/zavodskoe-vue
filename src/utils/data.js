@@ -25,6 +25,8 @@ export const COLORS = {
   'stop': 'rgb(81,174,0)'
 };
 
+export const META_FIELDS = ['builder'];
+
 export const getColorByType = type => {
   return type && ADMIN_TYPES[type] && COLORS[ADMIN_TYPES[type]];
 };

@@ -64,7 +64,8 @@
     },
 
     methods: {
-      onSelect() {
+      onSelect(event) {
+        event.stopPropagation();
         this.select(this.building.id);
       }
     },
