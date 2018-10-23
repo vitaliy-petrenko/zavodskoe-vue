@@ -1,5 +1,5 @@
 <template>
-  <g>
+  <g class="svg-estate-building-group" :class="{ 'is-selected': isSelected }">
     <polygon
         class="svg-estate-building"
         :points="points"
@@ -8,9 +8,7 @@
     >
     </polygon>
 
-    <g v-if="isSelected" v-for="path in building.paths" :key="path.distance">
-      <way :path="path" :showTooltip="showTooltip" :hideTooltip="hideTooltip"></way>
-    </g>
+    <way v-if="isSelected" :path="path" :showTooltip="showTooltip" :hideTooltip="hideTooltip" v-for="path in building.paths" :key="path.distance"></way>
   </g>
 </template>
 
@@ -20,6 +18,8 @@
     cursor: pointer;
     transition: fill .1s;
     fill: #000;
+    position: relative;
+    z-index: 1;
 
     &.is-selected {
       fill: #f00;
@@ -28,16 +28,25 @@
 
     &:hover {
       fill: darken(#f00, 5%);
+      z-index: 2;
     }
 
     &:active {
       fill: #f00;
     }
   }
+
+  .svg-estate-building-group {
+    position: relative;
+    z-index: 2;
+    &.is-selected {
+      position: relative;
+      z-index: 1;
+    }
+  }
 </style>
 
 <script>
-  import store from '../../utils/store';
   import Way from './Way';
 
   export default {

@@ -8,13 +8,13 @@
 <script>
   import Sidebar from './components/Sidebar';
   import MainFrame from './components/MainFrame';
-  import store from './utils/store';
+  import { estateBuildings } from './utils/data';
 
   export default {
     name: 'App',
 
     data() {
-      const buildings = store.estateBuildings;
+      const buildings = [...estateBuildings];
 
       return ({
         buildings,

@@ -35,13 +35,13 @@
 </style>
 
 <script>
-  const TOOLTIP_SHOW_TIME = 1000;
+  import { getColorByType } from '../../utils/data';
 
   export default {
     props: ['path', 'showTooltip', 'hideTooltip'],
 
     data() {
-      const color = `rgb(${this.path.color})`;
+      const color = getColorByType(this.path.type);
 
       return {
         color,

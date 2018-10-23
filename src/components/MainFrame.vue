@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="main" ref="scrollerElement">
     <info-block></info-block>
 
     <svg-index :buildings="buildings" :selected="selected" :select="select"></svg-index>
@@ -10,12 +10,11 @@
   @import "../less/variables.less";
 
   .main {
-    margin-left: @sidebar-width;
-    //position: fixed;
-    //height: 100%;
-    //left: @sidebar-width;
-    //right: 0;
-    //overflow: auto;
+    position: fixed;
+    height: 100%;
+    left: @sidebar-width;
+    right: 0;
+    overflow: auto;
   }
 
 </style>
