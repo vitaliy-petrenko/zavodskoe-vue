@@ -1,7 +1,7 @@
 <style lang="less">
   @import "../../less/variables.less";
 
-  @ratio: 1.6;
+  @ratio: 2;
 
   .svg-index {
     min-width: @ratio * 1640px;
