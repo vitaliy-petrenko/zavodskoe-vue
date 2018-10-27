@@ -177,6 +177,7 @@
 
 
 <script>
+  import invertColor from 'invert-color';
   import EstateBuilding from './EstateBuilding';
   import { pluralize } from '../../utils/other';
   import locale from '../../utils/locale';
@@ -202,10 +203,11 @@
 
     computed: {
       style() {
-        const { bg, x, y } = this.tooltip;
+        const { bg, x, y, color } = this.tooltip;
 
         return `
           background-color: ${bg};
+          color: ${color};
           transform: translate3d(${x}px, ${y}px, 0);
         `;
       },
@@ -243,7 +245,8 @@
           x: x - offsetLeft + scrollLeft,
           y: y - offsetTop + scrollTop,
           distance: `${meters} ${pluralize(meters, ...locale.meters)}`,
-          bg
+          bg,
+          color: invertColor(bg, true)
         };
 
         Object.assign(this.tooltip, NEW_TOOLTIP_PROPS);

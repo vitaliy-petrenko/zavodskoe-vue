@@ -1,5 +1,5 @@
 <template>
-  <path :d="path.way" :stroke="color" class="svg-way" @mouseover="mouseOver" @mouseout="mouseOut"></path>
+  <path :d="path.way" :stroke="path.color" class="svg-way" @mouseover="mouseOver" @mouseout="mouseOut"></path>
 </template>
 
 <style lang="less" scoped="">
@@ -35,22 +35,12 @@
 </style>
 
 <script>
-  import { getColorByType } from '../../utils/data';
-
   export default {
     props: ['path', 'showTooltip', 'hideTooltip'],
 
-    data() {
-      const color = getColorByType(this.path.type);
-
-      return {
-        color,
-      };
-    },
-
     methods: {
       mouseOver({ pageX = 0, pageY = 0 } = {}) {
-        this.showTooltip(pageX, pageY, this.path.distance, this.color);
+        this.showTooltip(pageX, pageY, this.path.distance, this.path.color);
       },
 
       mouseOut() {

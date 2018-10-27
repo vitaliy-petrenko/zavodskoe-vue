@@ -5,7 +5,7 @@
     </div>
 
     <div class="info-block__section">
-      <div class="info-block__meta-item" v-for="(item, index) in list" :key="index">
+      <div class="info-block__meta-item" v-for="(item, index) in metaList" :key="index">
         {{item.field}} - {{item.value}}
       </div>
     </div>
@@ -15,8 +15,8 @@
       <div class="info-block__section-title">
         {{locale.distance.title}}:
       </div>
-      <div class="info-block__meta-item">
-        тут вот расстояния вместе с фильтрами добавятся
+      <div class="info-block__meta-item" v-for="(item, index) in distances" :key="index">
+        {{item.text}} - <span :style="item.style">{{item.distance}}</span>
       </div>
     </div>
   </div>
@@ -26,6 +26,9 @@
   @import "../less/variables.less";
 
   .info-block {
+    font-size: 12px;
+    line-height: 16/12;
+    text-transform: lowercase;
     position: fixed;
     z-index: 4;
     top: 0;
@@ -65,7 +68,8 @@
 </style>
 
 <script>
-  import { META_FIELDS } from '../utils/data';
+  import { META_FIELDS, ADMIN_TYPES } from '../utils/data';
+  import { ADMIN_COLORS } from '../utils/colors';
   import locale from '../utils/locale';
 
   export default {
@@ -84,7 +88,25 @@
         return !!this.selected;
       },
 
-      list() {
+      distances() {
+        if (!this.selected) return;
+
+        const distances = [];
+
+        Object.entries(this.selected.distances).forEach(([type, distance]) => {
+          distances.push({
+            distance: Math.round(distance),
+            text: locale.types[ADMIN_TYPES[type]],
+            style: `
+              color: ${ADMIN_COLORS[ADMIN_TYPES[type]]};
+            `
+          });
+        });
+
+        return distances;
+      },
+
+      metaList() {
         const list = [];
 
         this.selected && META_FIELDS.forEach(field => {

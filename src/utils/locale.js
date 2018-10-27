@@ -6,5 +6,15 @@ export default {
 
   distance: {
     title: 'удаленность'
+  },
+
+  types: {
+    kindergarten: 'Детский сад',
+    school: 'Школа',
+    hospitals: 'Больница',
+    cultural_institutions: 'Культура',
+    parking: 'Парковка',
+    market: 'Магазин',
+    stop: 'Остановка'
   }
 };

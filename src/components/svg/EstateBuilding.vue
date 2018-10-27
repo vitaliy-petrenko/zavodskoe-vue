@@ -23,7 +23,6 @@
 
     &.is-selected {
       fill: #f00;
-      pointer-events: none;
     }
 
     &:hover {
