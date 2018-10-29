@@ -1,6 +1,6 @@
 # zavodskoe-vue
 
-[a link](https://vitaliy-petrenko.github.io/zavodskoe-vue/)
+[demo here](https://zavodskoe.herokuapp.com)
 
 > A Vue.js project
 
