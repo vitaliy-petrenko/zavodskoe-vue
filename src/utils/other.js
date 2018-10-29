@@ -1,3 +1,5 @@
+import { clone, map } from 'lodash';
+
 export const pluralize = (number, one, two, five) => {
   let n = Math.abs(number);
   n %= 100;
@@ -13,3 +15,5 @@ export const pluralize = (number, one, two, five) => {
   }
   return five;
 };
+
+export const deepCloneCollection = collection => map(collection, clone);

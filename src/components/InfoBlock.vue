@@ -1,5 +1,5 @@
 <template>
-  <div class="info-block" :class="{'is-active': show}">
+  <div class="info-block" :class="{'is-active': show}" @click="click">
     <div class="info-block__title" v-if="selected">
       B - {{selected.id}}
     </div>
@@ -16,7 +16,7 @@
         {{locale.distance.title}}:
       </div>
       <div class="info-block__meta-item" v-for="(item, index) in distances" :key="index">
-        {{item.text}} - <span :style="item.style">{{item.distance}}</span>
+        {{item.text}} - <span class="distance-label" :class="item.className">{{item.distance}}</span>
       </div>
     </div>
   </div>
@@ -27,7 +27,7 @@
 
   .info-block {
     font-size: 12px;
-    line-height: 16/12;
+    line-height: 18/12;
     text-transform: lowercase;
     position: fixed;
     z-index: 4;
@@ -59,17 +59,21 @@
     color: @info-block-title-color;
     font-size: @info-block-title-size;
     margin-bottom: @grid-size * 10;
+    text-transform: uppercase;
   }
 
   .info-block__section-title {
     color: @info-block-section-title;
     margin-bottom: @grid-size * 6;
   }
+
+  .distance-label {
+    .make-colors(color);
+  }
 </style>
 
 <script>
   import { META_FIELDS, ADMIN_TYPES } from '../utils/data';
-  import { ADMIN_COLORS } from '../utils/colors';
   import locale from '../utils/locale';
 
   export default {
@@ -81,6 +85,12 @@
           distance: { ...locale.distance }
         }
       };
+    },
+
+    methods: {
+      click(e) {
+        e.stopPropagation();
+      }
     },
 
     computed: {
@@ -97,9 +107,7 @@
           distances.push({
             distance: Math.round(distance),
             text: locale.types[ADMIN_TYPES[type]],
-            style: `
-              color: ${ADMIN_COLORS[ADMIN_TYPES[type]]};
-            `
+            className: `distance-label--${ADMIN_TYPES[type]}`
           });
         });
 

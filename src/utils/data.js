@@ -38,6 +38,8 @@ export const estateBuildings = (() => {
   return _buildings;
 })();
 
+export const MAX_DISTANCES = {...maxDistances};
+
 export const ADMIN_TYPES = {
   1: 'kindergarten',
   2: 'school',

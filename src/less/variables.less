@@ -15,3 +15,72 @@
 @info-block-title-size: 30px;
 @info-block-title-color: #008bdd;
 @info-block-section-title: #b1b1b1;
+
+/* admin colors */
+@kindergarten: rgb(19, 110, 137);
+@school: rgb(82, 161, 199);
+@hospitals: rgb(109, 43, 43);
+@cultural_institutions: rgb(71, 192, 168);
+@parking: rgb(192, 71, 95);
+@market: rgb(95, 192, 71);
+@stop: rgb(71, 95, 192);
+
+.make-colors-selector(@selector, @property) {
+  &--kindergarten @{selector} {
+      @{property}: @kindergarten;
+  }
+
+  &--school @{selector} {
+      @{property}: @school;
+  }
+
+  &--hospitals@{selector} {
+      @{property}: @hospitals;
+  }
+
+  &--cultural_institutions @{selector} {
+      @{property}: @cultural_institutions;
+  }
+
+  &--parking @{selector} {
+      @{property}: @parking;
+  }
+
+  &--market @{selector} {
+      @{property}: @market;
+  }
+
+  &--stop @{selector} {
+      @{property}: @stop;
+  }
+}
+
+.make-colors(@property) {
+  &--kindergarten {
+      @{property}: @kindergarten;
+  }
+
+  &--school {
+      @{property}: @school;
+  }
+
+  &--hospitals {
+      @{property}: @hospitals;
+  }
+
+  &--cultural_institutions {
+      @{property}: @cultural_institutions;
+  }
+
+  &--parking {
+      @{property}: @parking;
+  }
+
+  &--market {
+      @{property}: @market;
+  }
+
+  &--stop {
+      @{property}: @stop;
+  }
+}

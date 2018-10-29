@@ -1,5 +1,5 @@
 <template>
-  <path :d="path.way" :stroke="path.color" class="svg-way" @mouseover="mouseOver" @mouseout="mouseOut"></path>
+  <path :d="path.way" :stroke="path.color" class="svg-way" @mouseover="mouseOver" @mouseout="mouseOut" @click="click"></path>
 </template>
 
 <style lang="less" scoped="">
@@ -45,6 +45,10 @@
 
       mouseOut() {
         this.hideTooltip();
+      },
+
+      click(e) {
+        e.stopPropagation();
       }
     }
   };
