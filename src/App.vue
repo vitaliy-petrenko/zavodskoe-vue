@@ -24,7 +24,7 @@
     initialFilters = Object.entries(ADMIN_TYPES).reduce((result, [type, key]) => {
       const
         maxValue = Math.ceil(MIN_MAX_DISTANCES[type].max),
-        minValue = Math.floor(MIN_MAX_DISTANCES[type].min);
+        minValue = Math.ceil(MIN_MAX_DISTANCES[type].min);
 
       result[type] = {
         type,
