@@ -167,6 +167,7 @@
           :select="_select"
           :showTooltip="showTooltip"
           :hideTooltip="mouseOutTooltipHide"
+          :filters="filters"
       >
       </estate-building>
     </svg>
@@ -190,7 +191,7 @@
   };
 
   export default {
-    props: ['buildings', 'selected', 'select', 'scrollerElement'],
+    props: ['buildings', 'selected', 'select', 'scrollerElement', 'filters'],
 
     data() {
       return ({

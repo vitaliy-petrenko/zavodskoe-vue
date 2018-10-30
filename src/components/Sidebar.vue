@@ -4,7 +4,7 @@
       <div class="filter" v-for="filter in filtersList" v-bind:key="filter.key">
         <div class="filter__checkbox filter__item">
           <label class="filter-checkbox" :class="filter.className">
-            <input type="checkbox" v-model="filter.isActive">
+            <input type="checkbox" v-model="filter.isActive" @click="toggleFilter (filter.type)">
             <span class="filter-checkbox__label">
               {{filter.text}}
             </span>
@@ -19,6 +19,7 @@
                 :min="filter.minValue"
                 :dotSize="12"
                 :height="2"
+                @callback="_changeFilter (filter.type)"
             ></vue-slider>
           </div>
 
@@ -28,6 +29,45 @@
     </div>
   </div>
 </template>
+
+<script>
+  import VueSlider from 'vue-slider-component';
+  import { ADMIN_TYPES } from '../utils/data';
+
+  export default {
+    props: ['filters', 'changeFilter', 'toggleFilter'],
+
+    data() {
+      return {
+        timeouts: {},
+        filtersList: Object.values(this.filters).map(filter => {
+          return {
+            ...filter,
+            className: `filter-checkbox--${ADMIN_TYPES[filter.type]}`
+          };
+        })
+      };
+    },
+
+    methods: {
+      stopPropagation(event) {
+        event.stopPropagation();
+      },
+
+      _changeFilter(type) {
+        clearTimeout(this.timeouts[type]);
+
+        this.timeouts[type] = setTimeout(() => {
+          const { className, ...filter } = this.filtersList.find(({ type: filterType }) => type === filterType);
+
+          this.changeFilter(filter);
+        }, 100);
+      }
+    },
+
+    components: { VueSlider }
+  };
+</script>
 
 <style lang="less">
   @import "../less/variables.less";
@@ -149,31 +189,3 @@
     }
   }
 </style>
-
-<script>
-  import VueSlider from 'vue-slider-component';
-  import { ADMIN_TYPES } from '../utils/data';
-
-  export default {
-    props: ['filters', 'applyFilter', 'toggleFilter'],
-
-    data() {
-      return {
-        filtersList: Object.values(this.filters).map(filter => {
-          return {
-            ...filter,
-            className: `filter-checkbox--${ADMIN_TYPES[filter.type]}`
-          };
-        })
-      };
-    },
-
-    methods: {
-      stopPropagation(event) {
-        event.stopPropagation();
-      }
-    },
-
-    components: { VueSlider }
-  };
-</script>

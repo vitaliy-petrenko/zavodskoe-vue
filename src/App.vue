@@ -1,8 +1,8 @@
 <template>
   <div class="container" @click="click">
-    <sidebar :toggleFilter="toggleFilter" :applyFilter="applyFilter" :filters="filters"></sidebar>
+    <sidebar :toggleFilter="toggleFilter" :changeFilter="changeFilter" :filters="filters"></sidebar>
     <info-block :selected="selectedData"></info-block>
-    <main-frame :buildings="buildings" :selected="selected" :select="select"></main-frame>
+    <main-frame :buildings="buildings" :selected="selected" :select="select" :filters="filters"></main-frame>
   </div>
 </template>
 
@@ -21,10 +21,6 @@
   import { deepCloneCollection } from './utils/other';
 
   const
-    filter = (buildings, filters) => {
-      return buildings;
-    },
-
     initialFilters = Object.entries(ADMIN_TYPES).reduce((result, [type, key]) => {
       const
         maxValue = Math.ceil(MIN_MAX_DISTANCES[type].max),
@@ -55,10 +51,6 @@
     },
 
     methods: {
-      filterBuildings() {
-        this.buildings = filter(deepCloneCollection(this.buildings), this.filters);
-      },
-
       select(id) {
         this.selected = id;
       },
@@ -67,12 +59,13 @@
         this.select(null);
       },
 
-      toggleFilter(filter) {
-        console.log('toggle', filter);
+      toggleFilter(type) {
+        const oldValue = this.filters[type].isActive;
+        this.filters[type].isActive = !oldValue;
       },
 
-      applyFilter(filter, minValue, maxValue) {
-        console.log('apply', ...arguments);
+      changeFilter(filter) {
+        this.filters[filter.type] = { ...filter };
       }
     },
 

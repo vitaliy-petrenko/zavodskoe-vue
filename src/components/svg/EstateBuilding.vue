@@ -1,5 +1,5 @@
 <template>
-  <g class="svg-estate-building-group" :class="{ 'is-selected': isSelected }">
+  <g class="svg-estate-building-group" :class="{ 'is-selected': isSelected, 'is-disabled': isDisabled }">
     <polygon
         class="svg-estate-building"
         :points="points"
@@ -38,9 +38,16 @@
   .svg-estate-building-group {
     position: relative;
     z-index: 2;
+    will-change: opacity;
+    transition: opacity .2s;
+
     &.is-selected {
       position: relative;
       z-index: 1;
+    }
+
+    &.is-disabled {
+      opacity: .2;
     }
   }
 </style>
@@ -49,7 +56,7 @@
   import Way from './Way';
 
   export default {
-    props: ['building', 'selected', 'select', 'showTooltip', 'hideTooltip'],
+    props: ['building', 'selected', 'select', 'showTooltip', 'hideTooltip', 'filters'],
     data() {
       return ({
         points: this.building.polygon
@@ -59,6 +66,25 @@
     computed: {
       isSelected() {
         return this.selected === this.building.id;
+      },
+
+      isDisabled() {
+        const filters = Object.values(this.filters).filter(filter => filter.isActive);
+
+        if (filters.length) {
+          let isDisabled = false;
+          filters.forEach(({ type, value }) => {
+            if (this.building.distances[type] > value) {
+              isDisabled = true;
+
+              return false;
+            }
+          });
+
+          return isDisabled;
+        } else {
+          return false;
+        }
       }
     },
 

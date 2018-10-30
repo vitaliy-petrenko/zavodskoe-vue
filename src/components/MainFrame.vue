@@ -1,6 +1,6 @@
 <template>
   <div class="main" ref="scrollerElement">
-    <svg-index :buildings="buildings" :selected="selected" :select="select"></svg-index>
+    <svg-index :buildings="buildings" :selected="selected" :select="select" :filters="filters"></svg-index>
   </div>
 </template>
 
@@ -21,7 +21,7 @@
   import SvgIndex from './svg/SvgIndex.vue';
 
   export default {
-    props: ['buildings', 'selected', 'select'],
+    props: ['buildings', 'selected', 'select', 'filters'],
 
     components: {
       SvgIndex
