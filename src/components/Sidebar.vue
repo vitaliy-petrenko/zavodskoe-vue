@@ -16,7 +16,7 @@
                 v-model="filter.value"
                 :max="filter.maxValue"
                 :tooltip="false"
-                :min="0"
+                :min="filter.minValue"
                 :dotSize="12"
                 :height="2"
             ></vue-slider>

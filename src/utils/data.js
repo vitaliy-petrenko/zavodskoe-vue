@@ -1,7 +1,9 @@
 import srcData from '../data/map.json';
-import { getColorByDistance } from './colors';
+import rgbHex from 'rgb-hex';
 
-let maxDistances = {};
+let
+  maxDistances = {},
+  minDistances = {};
 
 export const estateBuildings = (() => {
   const paths = [];
@@ -14,6 +16,12 @@ export const estateBuildings = (() => {
 
       building.paths.forEach(({ type, distance }) => {
         building.distances[type] = distance;
+
+        if (minDistances[type]) {
+          minDistances[type] = Math.min(minDistances[type], distance);
+        } else {
+          minDistances[type] = distance;
+        }
 
         if (maxDistances[type]) {
           maxDistances[type] = Math.max(maxDistances[type], distance);
@@ -32,13 +40,26 @@ export const estateBuildings = (() => {
   paths.forEach(path => {
     const { distance, type } = path;
 
-    path.color = getColorByDistance(distance, maxDistances[type]);
+    //вот тут закомментить/раскомментить для использования цветов из приложения, а не из json
+    path.color = '#' + rgbHex(`rgb(${path.color})`);
+    // path.color = getColorByDistance(distance, minDistances[type], maxDistances[type]);
   });
 
   return _buildings;
 })();
 
-export const MAX_DISTANCES = {...maxDistances};
+export const MIN_MAX_DISTANCES = (() => {
+  return Object.entries(maxDistances).reduce((result, [type, distance]) => {
+    Object.assign(result, {
+      [type]: {
+        min: minDistances[type],
+        max: distance
+      }
+    });
+
+    return result;
+  }, {});
+})();
 
 export const ADMIN_TYPES = {
   1: 'kindergarten',

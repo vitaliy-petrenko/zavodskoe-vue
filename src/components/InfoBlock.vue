@@ -105,7 +105,7 @@
 
         Object.entries(this.selected.distances).forEach(([type, distance]) => {
           distances.push({
-            distance: Math.round(distance),
+            distance: Math.ceil(distance),
             text: locale.types[ADMIN_TYPES[type]],
             className: `distance-label--${ADMIN_TYPES[type]}`
           });

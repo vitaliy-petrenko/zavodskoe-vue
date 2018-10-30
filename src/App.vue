@@ -16,7 +16,7 @@
   import Sidebar from './components/Sidebar';
   import MainFrame from './components/MainFrame';
   import InfoBlock from './components/InfoBlock';
-  import { estateBuildings, ADMIN_TYPES, MAX_DISTANCES } from './utils/data';
+  import { estateBuildings, ADMIN_TYPES, MIN_MAX_DISTANCES } from './utils/data';
   import locale from './utils/locale';
   import { deepCloneCollection } from './utils/other';
 
@@ -26,13 +26,15 @@
     },
 
     initialFilters = Object.entries(ADMIN_TYPES).reduce((result, [type, key]) => {
-      const maxValue = Math.ceil(MAX_DISTANCES[type]);
+      const
+        maxValue = Math.ceil(MIN_MAX_DISTANCES[type].max),
+        minValue = Math.floor(MIN_MAX_DISTANCES[type].min);
 
       result[type] = {
         type,
         key,
         text: locale.types[key],
-        minValue: 0,
+        minValue: minValue,
         maxValue: maxValue,
         isActive: false,
         value: maxValue

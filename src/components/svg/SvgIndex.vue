@@ -236,7 +236,7 @@
           { scrollLeft, scrollTop, offsetLeft, offsetTop } = this.getScrollerOffsets(),
           x = mouseX,
           y = mouseY,
-          meters = Math.floor(distance);
+          meters = Math.ceil(distance);
 
         clearTimeout(this.tooltip.timeout);
 
