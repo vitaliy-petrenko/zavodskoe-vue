@@ -1,7 +1,7 @@
 <template>
   <div class="container" @click="click">
     <sidebar :toggleFilter="toggleFilter" :changeFilter="changeFilter" :filters="filters"></sidebar>
-    <info-block :selected="selectedData"></info-block>
+    <info-block :selected="selected"></info-block>
     <main-frame :buildings="buildings" :selected="selected" :select="select" :filters="filters"></main-frame>
   </div>
 </template>
@@ -52,7 +52,7 @@
 
     methods: {
       select(id) {
-        this.selected = id;
+        this.selected = this.buildings[id];
       },
 
       click() {
@@ -66,12 +66,6 @@
 
       changeFilter(filter) {
         this.filters[filter.type] = { ...filter };
-      }
-    },
-
-    computed: {
-      selectedData() {
-        return this.buildings[this.selected];
       }
     },
 

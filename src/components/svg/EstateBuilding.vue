@@ -1,14 +1,11 @@
 <template>
-  <g class="svg-estate-building-group" :class="{ 'is-selected': isSelected, 'is-disabled': isDisabled }">
+  <g class="svg-estate-building-group">
     <polygon
         class="svg-estate-building"
-        :points="points"
+        :points="clickPoints"
         @click="onSelect"
-        :class="{ 'is-selected': isSelected }"
     >
     </polygon>
-
-    <way v-if="isSelected" :path="path" :showTooltip="showTooltip" :hideTooltip="hideTooltip" v-for="path in building.paths" :key="path.distance"></way>
   </g>
 </template>
 
@@ -17,21 +14,16 @@
     stroke-width: 0;
     cursor: pointer;
     transition: fill .1s;
-    fill: #000;
+    fill: transparent;
     position: relative;
     z-index: 1;
 
     &.is-selected {
-      fill: #f00;
+      fill: transparent;
     }
 
     &:hover {
-      fill: darken(#f00, 5%);
       z-index: 2;
-    }
-
-    &:active {
-      fill: #f00;
     }
   }
 
@@ -53,39 +45,12 @@
 </style>
 
 <script>
-  import Way from './Way';
-
   export default {
     props: ['building', 'selected', 'select', 'showTooltip', 'hideTooltip', 'filters'],
     data() {
       return ({
-        points: this.building.polygon
+        clickPoints: this.building.polygon
       });
-    },
-
-    computed: {
-      isSelected() {
-        return this.selected === this.building.id;
-      },
-
-      isDisabled() {
-        const filters = Object.values(this.filters).filter(filter => filter.isActive);
-
-        if (filters.length) {
-          let isDisabled = false;
-          filters.forEach(({ type, value }) => {
-            if (this.building.distances[type] > value) {
-              isDisabled = true;
-
-              return false;
-            }
-          });
-
-          return isDisabled;
-        } else {
-          return false;
-        }
-      }
     },
 
     methods: {
@@ -93,10 +58,6 @@
         event.stopPropagation();
         this.select(this.building.id);
       }
-    },
-
-    components: {
-      Way
     }
   };
 </script>
