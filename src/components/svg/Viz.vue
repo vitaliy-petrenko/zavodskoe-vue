@@ -15,6 +15,8 @@
   .viz {
     fill: #fff;
     transition: opacity .1s;
+    stroke-width: .3;
+    stroke: #000;
 
     &.is-disabled {
       fill: #adadad;
