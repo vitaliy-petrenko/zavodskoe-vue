@@ -1,8 +1,6 @@
 <style lang="less">
   @import "../../less/variables.less";
-
   @ratio: 2;
-
   .layer() {
     min-width: @ratio * 1640px;
     min-height: @ratio * 610px;
@@ -11,17 +9,14 @@
     height: 100%;
     user-select: none;
   }
-
   .svg-index {
     .layer;
   }
-
   .svg-bg .bg_a {
     stroke: rgb(153, 153, 153);
     stroke-width: 0;
     fill: none;
   }
-
   .svg-bg .bg_b {
     stroke: #bdbfbd;
     stroke-linecap: round;
@@ -29,7 +24,6 @@
     stroke-width: .25px;
     fill: none;
   }
-
   .svg-tooltip {
     background: #000;
     border-radius: 3px;
@@ -47,14 +41,11 @@
     top: -(30px + 16px);
     transform: translate3d(0, 0, 0);
     pointer-events: none;
-
     opacity: .9;
-
     &.is-hidden {
       opacity: 0;
     }
   }
-
   .layer {
     position: absolute;
     width: 100%;
@@ -63,7 +54,6 @@
     left: 0;
     pointer-events: none;
   }
-
   .layer--events {
     pointer-events: all;
   }
@@ -86,7 +76,9 @@
           :filters="filters"
       >
       </viz>
+      <service></service>
       <own-shadows></own-shadows>
+      <icons></icons>
       <estate-building
           v-for="building in buildings"
           :key="building.id"
@@ -106,6 +98,8 @@
 <script>
   import invertColor from 'invert-color';
   import EstateBuilding from './EstateBuilding';
+  import Icons from './Icons.vue';
+  import Service from './Service.vue';
   import Streets from './Streets.vue';
   import DropShadows from './DropShadows.vue';
   import Contours from './Contours.vue';
@@ -114,53 +108,43 @@
   import Viz from './Viz.vue';
   import { pluralize } from '../../utils/other';
   import locale from '../../utils/locale';
-
   const DEFAULT_TOOLTIP_PROPS = {
     show: false,
     distance: null,
     x: 0,
     y: 0,
   };
-
   export default {
     props: ['buildings', 'selected', 'select', 'scrollerElement', 'filters'],
-
     data() {
       return ({
         tooltip: {
           ...DEFAULT_TOOLTIP_PROPS,
           timeout: undefined
         },
-
         viewBox: '-200 -50 1400 720',
         preserveAspectRatio: 'xMinYMid meet',
       });
     },
-
     computed: {
       style() {
         const { bg, x, y, color } = this.tooltip;
-
         return `
           background-color: ${bg};
           color: ${color};
           transform: translate3d(${x}px, ${y}px, 0);
         `;
       },
-
       hasSelectedItem() {
         return this.selected && this.selected.id;
       }
     },
-
     methods: {
       //todo: use drag area instead of scrolling
       getScrollerOffsets() {
         const { scrollLeft, scrollTop, offsetLeft, offsetTop } = this.$parent.$refs.scrollerElement;
-
         return { scrollLeft, scrollTop, offsetLeft, offsetTop };
       },
-
       /**
        * @param {Number} mouseX
        * @param {Number} mouseY
@@ -173,9 +157,7 @@
           x = mouseX,
           y = mouseY,
           meters = Math.ceil(distance);
-
         clearTimeout(this.tooltip.timeout);
-
         const NEW_TOOLTIP_PROPS = {
           show: true,
           x: x - offsetLeft + scrollLeft,
@@ -184,34 +166,31 @@
           bg,
           color: invertColor(bg, true)
         };
-
         Object.assign(this.tooltip, NEW_TOOLTIP_PROPS);
       },
-
       hideTooltip() {
         this.tooltip.show = false;
       },
-
       mouseOutTooltipHide() {
         this.tooltip.timeout = setTimeout(() => {
           this.hideTooltip();
         }, 1500);
       },
-
       _select() {
         this.select(...arguments);
         this.hideTooltip();
       }
     },
-
     components: {
       EstateBuilding,
       Streets,
       DropShadows,
+      Service,
       Contours,
       OwnShadows,
       Way,
-      Viz
+      Viz,
+      Icons
     }
   };
 </script>
