@@ -86,7 +86,9 @@
           :filters="filters"
       >
       </viz>
+      <service></service>
       <own-shadows></own-shadows>
+      <icons></icons>
       <estate-building
           v-for="building in buildings"
           :key="building.id"
@@ -106,6 +108,8 @@
 <script>
   import invertColor from 'invert-color';
   import EstateBuilding from './EstateBuilding';
+  import Icons from './Icons.vue';
+  import Service from './Service.vue';
   import Streets from './Streets.vue';
   import DropShadows from './DropShadows.vue';
   import Contours from './Contours.vue';
@@ -208,10 +212,12 @@
       EstateBuilding,
       Streets,
       DropShadows,
+      Service,
       Contours,
       OwnShadows,
       Way,
-      Viz
+      Viz,
+      Icons
     }
   };
 </script>
